@@ -25,7 +25,7 @@ class HomeController extends BaseController
     }
 
     public function login(){
-         return View::make('home.login');
+        Throw new Exception('Method not implemented. Do it yourself!');
     }
 
 

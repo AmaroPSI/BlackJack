@@ -18,12 +18,13 @@ Router::get('home/index',	'HomeController/index');
 Router::get('home/start',	'HomeController/start');
 Router::get('home/about',	'HomeController/about');
 
-Router::get('home/',		'HomeController/login');
-Router::get('home/login',	'HomeController/login');
+Router::get('plano/',		'PlanoController/index');
+Router::get('plano/index',	'PlanoController/index');
 
+Router::post('plano/index',	'PlanoController/index');
 
-Router::get('home/',		'HomeController/index');
-Router::get('home/index',	'HomeController/index');
+Router::post('plano/',		'PlanoController/show');
+Router::post('plano/show',	'PlanoController/show');
 
 
 /************** End of URLEncoder Routing Rules ************************************/
