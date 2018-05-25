@@ -5,44 +5,50 @@
 	Layout::includeLayout('indexheader');
 
 	?>	
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ficha 8</title>
+<style type="text/css">
+	body {
+		margin:0px;
+	}
+</style>
 </head>
 <body>
-<form method="post">
-	<br>
-	</br>
-	<br>
-	</br>
-	<br>
-	</br>
-<div class="form-group">
- <label>Nome:</label>
-<br>
- <input name="nome" type="text" required>
-
- <br>
- <label>Despesas:</label> <br>
- <input name="despesas" type="number" required>
-
-<br>
- <label>Crédito:</label> <br>
- <input name="credito" type="number" required>
-
-<br>
- <label>Número de prestações:</label> <br>
- <input name="numPrest" type="number" required>
-
-<br>
-<input type="submit">
-
+    <h2 style='text-align:center;'>Blackjack</h2>
+<div align='center' style="background-color:beige; padding:5px; width:300px; margin:auto;">
+    <div style="text-decoration:underline; font-weight:bold;">Your Hand is:</div><br/>
+    <?php 
+	// Show cards
+	for ($i = 0; $i < sizeof($_SESSION['userHand']); $i++) {
+        echo $game->translateCard($_SESSION['userHand'][$i]) . "<br />";
+    }
+    echo "<div style='text-decoration:underline; font-weight:bold;'><br /><br />Your opponents visible cards: </div><br />";
+	if ($gameOver == 0)
+	{
+		for ($j = 1; $j < sizeof($_SESSION['dealerHand']); $j++) {
+			echo $game->translateCard($_SESSION['dealerHand'][$j]) . "<br />";
+		}
+	}
+	else
+	{
+		for ($j = 0; $j < sizeof($_SESSION['dealerHand']); $j++) {
+			echo $game->translateCard($_SESSION['dealerHand'][$j]) . "<br />";
+		}
+	}
+	
+	echo "<br /><br />";
+    /**game is not over; reload screen like normal**/
+    if ($gameOver == 0){
+        echo '<form style=\'text-align:center\' action=\'index.php\' method=\'get\'>
+                      <input type=\'submit\' name=\'hit\' value=\'hit\'/><br />
+                      <input type=\'submit\' name=\'stand\' value=\'stand\'/></form>';
+    } /**Victory conditions are met; print final screen**/
+    else{
+      echo 'Your final score was: ' . $_SESSION['uHandValue'] . '<br /> Your opponents final score was: '.$_SESSION['dHandValue'].'
+            <form style=\'text-align:center\' action=\'index.php\' method=\'get\'>
+            <input type=\'submit\' name=\'again\' value=\'Play Again\'/></form>';
+    } ?>
 </div>
 <?php Layout::includeLayout('footer'); ?>
-</form>
 </body>
 </html>
