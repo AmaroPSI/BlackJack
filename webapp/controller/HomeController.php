@@ -56,8 +56,8 @@ class HomeController extends BaseController
     //O método about não processa quaisquer dados e apenas devolve a vista ao cliente
         return View::make('home.about');
     }
-    public function vistaindex(){
-        return View::make('plano.index');
+    public function vistagame(){
+        return View::make('plano.game');
     }
 
 }

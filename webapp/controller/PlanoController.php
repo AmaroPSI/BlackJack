@@ -5,8 +5,8 @@ use ArmoredCore\Controllers\BaseController;
 
 	class PlanoController extends BaseController{
 
-	public function index() {
-		return View::make('plano.index');
+	public function game() {
+		return View::make('plano.game');
 	}
 
 	public function show() {

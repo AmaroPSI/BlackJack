@@ -18,8 +18,8 @@ Router::get('home/index',	'HomeController/index');
 Router::get('home/start',	'HomeController/start');
 Router::get('home/about',	'HomeController/about');
 
-Router::get('plano/',		'PlanoController/index');
-Router::get('plano/index',	'PlanoController/index');
+Router::get('plano/',		'PlanoController/game');
+Router::get('plano/game',	'PlanoController/game');
 
 Router::post('plano/',		'PlanoController/show');
 Router::post('plano/show',	'PlanoController/show');
