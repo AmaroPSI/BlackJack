@@ -21,10 +21,11 @@ Router::get('home/about',	'HomeController/about');
 Router::get('plano/',		'PlanoController/index');
 Router::get('plano/index',	'PlanoController/index');
 
-Router::post('plano/index',	'PlanoController/index');
-
 Router::post('plano/',		'PlanoController/show');
 Router::post('plano/show',	'PlanoController/show');
+
+Router::get('home/',		'HomeController/login');
+Router::get('home/login',	'HomeController/login');
 
 
 /************** End of URLEncoder Routing Rules ************************************/
