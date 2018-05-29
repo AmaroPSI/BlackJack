@@ -19,7 +19,6 @@ class HomeController extends BaseController
     }
 
     public function start(){
-
         //View::attachSubView('titlecontainer', 'layout.pagetitle', ['title' => 'Quick Start']);
         return View::make('home.start');
     }
@@ -56,8 +55,10 @@ class HomeController extends BaseController
     //O método about não processa quaisquer dados e apenas devolve a vista ao cliente
         return View::make('home.about');
     }
-    public function vistagame(){
-        return View::make('plano.game');
+    public function gamemenu(){
+        return View::make('home.gamemenu');
     }
-
+    public function game(){
+        return View::make('home.game');
+    }
 }

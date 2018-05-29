@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: smendes
- * Date: 02-05-2016
- * Time: 11:18
- */
+
 use ArmoredCore\Facades\Router;
 
 /****************************************************************************
@@ -27,5 +22,10 @@ Router::post('plano/show',	'PlanoController/show');
 Router::get('home/',		'HomeController/login');
 Router::get('home/login',	'HomeController/login');
 
+Router::get('home/',		'HomeController/gamemenu');
+Router::get('home/gamemenu','HomeController/gamemenu');
+
+Router::get('home/',		'HomeController/game');
+Router::get('home/game','HomeController/game');
 
 /************** End of URLEncoder Routing Rules ************************************/

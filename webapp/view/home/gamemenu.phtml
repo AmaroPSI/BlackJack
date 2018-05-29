@@ -1,0 +1,59 @@
+<?php 
+use ArmoredCore\WebObjects\Asset;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+Layout::includeLayout('headermenugame');
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BlackJack</title>
+</head>
+
+<body>
+<br>
+</br>
+<br>
+</br>
+<br>
+</br>
+
+
+<div id="header">
+
+<div id="header-logo"></div><!-- LOGO MARCA -->
+
+<h2>
+    Bem Vindo, 
+<div></div>
+   <span><a href="Painel.php" class="Fade">Alterar Perfil</a> // <a href="Painel.php?sair=sair" class="Fade">Sair</a></span>
+   </h2> 
+   <div id="header-icon"></div><!-- ICON HEADER -->
+
+</div><!-- HEDAER PAINEL -->
+
+
+
+<div id="menu">
+<ul>
+   <li><a href="index" class="Fade">Página Inicial</a></li>
+   <li><a href="Painel.php?Pag=EditarPerfil" class="Fade">Alterar Perfil</a></li>
+   <li><a href="about" class="Fade">Sobre</a></li>
+   <li><a href="game" class="Fade">Começar Jogo</a></li>
+   </ul>
+</div><!-- MENU -->
+
+<div id="content">
+
+<div id="content-center">
+
+</body>
+
+
+
+<?php Layout::includeLayout('footer'); ?>
