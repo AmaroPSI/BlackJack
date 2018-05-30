@@ -9,8 +9,5 @@ use ArmoredCore\Controllers\BaseController;
 		return View::make('plano.game');
 	}
 
-	public function show() {
-		return View::make('plano.show');
-	}
 }
 ?>
