@@ -1,31 +1,37 @@
 <?php
-<<<<<<< HEAD
-<<<<<<< HEAD
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\URL;
-=======
->>>>>>> parent of 362d80e... Carta a Funcionar
 
-//Array Cartas
-$Cartas = array("cardClubs2.png", "cardClubs3.png", "cardClubs4", "cardClubs5", "cardClubs6.", "cardClubs7", "cardClubs8", "cardClubs9", "cardClubs10", "cardClubsA", "cardClubsJ", "cardClubsK", "cardClubsQ", "cardDiamonds2", "cardDiamonds3", "cardDiamonds4", "cardDiamonds5", "cardDiamonds6", "cardDiamonds7", "cardDiamonds8", "cardDiamonds9", "cardDiamonds10", "cardDiamondsA", "cardDiamondsJ", "cardDiamondsK", "cardDiamondsQ", "cardHearts2", "cardHearts3", "cardHearts4", "cardHearts5", "cardHearts6", "cardHearts7", "cardHearts8", "cardHearts9", "cardHearts10", "cardHeartsA", "cardHeartsJ", "cardHeartsK", "cardHeartsQ", "cardSpades2", "cardSpades3", "cardSpades4", "cardSpades5", "cardSpades6", "cardSpades7", "cardSpades8", "8_cardSpades9", "cardSpades10", "cardSpadesA", "cardSpadesJ", "cardSpadesK", "cardSpadesQ");
+?>
 
-
-//Fazer Cartas Random
-for($x=0; $x<52; $x++){
-	//Fazer random cartas para o jogador
-
-<<<<<<< HEAD
-	//session_start();
-	
-?><br></br>
+<br></br>
 <?php
-	
+	$DECK = array();
 	$CardsArray = array("cardClubs2", "cardClubs3", "cardClubs4", "cardClubs5", "cardClubs6", "cardClubs7", "cardClubs8", "cardClubs9", "cardClubs10", "cardClubsA", "cardClubsJ", "cardClubsK", "cardClubsQ", "cardDiamonds2", "cardDiamonds3", "cardDiamonds4", "cardDiamonds5", "cardDiamonds6", "cardDiamonds7", "cardDiamonds8", "cardDiamonds9", "cardDiamonds10", "cardDiamondsA", "cardDiamondsJ", "cardDiamondsK", "cardDiamondsQ", "cardHearts2", "cardHearts3", "cardHearts4", "cardHearts5", "cardHearts6", "cardHearts7", "cardHearts8", "cardHearts9.", "cardHearts10", "cardHeartsA", "cardHeartsJ", "cardHeartsK", "cardHeartsQ", "cardSpades2", "cardSpades3", "cardSpades4", "cardSpades5", "cardSpades6", "cardSpades7", "cardSpades8", "cardSpades9", "cardSpades10", "cardSpadesA", "cardSpadesJ", "cardSpadesK", "cardSpadesQ");
+	//Stand/Hit...
 	$action = 'new';
 
 
-	if(isset($_GET['action'])) $action = $_GET['action'];
+	//Shuffle the Cards
+	for($x=0; $x<3; $x++){
+
+	//Cards to Player
+	$rand_key = array_rand($CardsArray, 1);
+	$rand_card = $CardsArray[$rand_key];
+	//Remove Cards From the Array
+	unset($CardsArray[$rand_key]);
+	
+	
+	if($x == 0 || $x == 1){
+		$player_cards[$x] = "$rand_card";
+	}
+	else{
+		$dealer_cards[$x-2] = "$rand_card";
+	}
+
+}
+if(isset($_GET['action'])) $action = $_GET['action'];
 	
 	if($action == 'new') {
 		$_SESSION['game'] = new Blackjack();
@@ -44,17 +50,19 @@ for($x=0; $x<52; $x++){
 		$_SESSION['game']->playDealer();
 	}
 	echo "Player Cards:<br>";
-	foreach($_SESSION['game']->Cards['Player'] as $card) ?>
-		<img src='<?=Asset::image("{$card['Suit']}{$card['Face']}.png")?>'>
-	<?php
+	foreach($_SESSION['game']->Cards['Player'] as $card) 
+	echo "
+	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
+	";
+
 	echo "<br>Player Score: ".$_SESSION['game']->Scores['Player'];
 	
 	echo "<br><br>Dealer Cards:<br>";
-	foreach($_SESSION['game']->Cards['Dealer'] as $card)?>
-		<img src='<?=Asset::image("cardClubs2.png")?>'>
-	<?php
+	foreach($_SESSION['game']->Cards['Dealer'] as $card)
+	echo "
+	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
+	";
 	echo "<br>Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
-	
 	// Options
 	if($_SESSION['game']->Scores['Player'] < 21) echo "<br><a href='?action=hit'>[Hit]</a>";
 	echo "<br><a href='?action=stand'>[Stand]</a><br><a href='?action=new'>[New]</a>";
@@ -62,22 +70,6 @@ for($x=0; $x<52; $x++){
 	if($_SESSION['game']->GameEnd == 1)
 	echo "<br>Game Result: ".$_SESSION['game']->getResult();
 
-=======
-//Array with all the cards
-$cards = array("\public\img\cardClubs2");
-$size = sizeof($cards);
-echo "$size";
->>>>>>> parent of c927ebc... Primeira tentativa das cartas no ecrã
 ?>
-=======
-
-	$rand_key = array_rand($Cartas, 1);
-	$rand_card = $Cartas[$rand_key];
-echo"
-<p> 
-$rand_key	<img src=\"img/$rand_card\" width=\"180\" height=\"232\" />
-</p>
-";
-}
-?>
->>>>>>> parent of 362d80e... Carta a Funcionar
+	
+	

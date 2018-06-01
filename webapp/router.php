@@ -28,4 +28,5 @@ Router::get('home/gamemenu','HomeController/gamemenu');
 Router::get('home/',		'HomeController/game');
 Router::get('home/game','HomeController/game');
 
+
 /************** End of URLEncoder Routing Rules ************************************/
