@@ -8,7 +8,11 @@ use ArmoredCore\WebObjects\URL;
 	
 ?><br></br>
 <?php
+	
+	$CardsArray = array("cardClubs2", "cardClubs3", "cardClubs4", "cardClubs5", "cardClubs6", "cardClubs7", "cardClubs8", "cardClubs9", "cardClubs10", "cardClubsA", "cardClubsJ", "cardClubsK", "cardClubsQ", "cardDiamonds2", "cardDiamonds3", "cardDiamonds4", "cardDiamonds5", "cardDiamonds6", "cardDiamonds7", "cardDiamonds8", "cardDiamonds9", "cardDiamonds10", "cardDiamondsA", "cardDiamondsJ", "cardDiamondsK", "cardDiamondsQ", "cardHearts2", "cardHearts3", "cardHearts4", "cardHearts5", "cardHearts6", "cardHearts7", "cardHearts8", "cardHearts9.", "cardHearts10", "cardHeartsA", "cardHeartsJ", "cardHeartsK", "cardHeartsQ", "cardSpades2", "cardSpades3", "cardSpades4", "cardSpades5", "cardSpades6", "cardSpades7", "cardSpades8", "cardSpades9", "cardSpades10", "cardSpadesA", "cardSpadesJ", "cardSpadesK", "cardSpadesQ");
 	$action = 'new';
+
+
 	if(isset($_GET['action'])) $action = $_GET['action'];
 	
 	if($action == 'new') {
@@ -20,16 +24,17 @@ use ArmoredCore\WebObjects\URL;
 	if($action == 'hit') {
 		if($_SESSION['game']->Scores['Player'] < 21) {
 			$_SESSION['game']->addCard('Player', 1);	
-			if($_SESSION['game']->Scores['Player'] > 21) $_SESSION['game']->playBank();
+			if($_SESSION['game']->Scores['Player'] > 21) $_SESSION['game']->playDealer();
 		}
 	}
 	
 	if($action == 'stand') {
-		$_SESSION['game']->playBank();
+		$_SESSION['game']->playDealer();
 	}
 	echo "Player Cards:<br>";
-	foreach($_SESSION['game']->Cards['Player'] as $card) 
-		echo "<img src='/card{$card['Suit']}{$card['Face']}.png'>";
+	foreach($_SESSION['game']->Cards['Player'] as $card) ?>
+		<img src='<?=Asset::image("{$card['Suit']}{$card['Face']}.png")?>'>
+	<?php
 	echo "<br>Player Score: ".$_SESSION['game']->Scores['Player'];
 	
 	echo "<br><br>Dealer Cards:<br>";

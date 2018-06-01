@@ -58,15 +58,15 @@
 			$this->Scores[$entity] = $Value;
 		}
 		
-		public function playBank() {
+		public function playDealer() {
 			// End the game
 			$this->GameEnd = 1;
 
-			// If the player's score is bigger than the bank's and the player's score is smaller than or equal to 21 then play.
+			// If the player's score is bigger than the Dealer's and the player's score is smaller than or equal to 21 then play.
 			while($this->Scores['Player'] > $this->Scores['Dealer'] && $this->Scores['Player'] <= 21)
 				$this->addCard('Dealer', 1);
 			
-			// calculate the score for the bank
+			// calculate the score for the Dealer
 			$this->calculateScore('Dealer');
 				
 		}
