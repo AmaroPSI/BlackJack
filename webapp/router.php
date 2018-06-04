@@ -13,12 +13,6 @@ Router::get('home/index',	'HomeController/index');
 Router::get('home/start',	'HomeController/start');
 Router::get('home/about',	'HomeController/about');
 
-Router::get('plano/',		'PlanoController/game');
-Router::get('plano/game',	'PlanoController/game');
-
-Router::post('plano/',		'PlanoController/show');
-Router::post('plano/show',	'PlanoController/show');
-
 Router::get('home/',		'HomeController/login');
 Router::get('home/login',	'HomeController/login');
 
@@ -34,4 +28,6 @@ Router::get('home/hit', 	'HomeController/hit');
 Router::get('home/',		'HomeController/stand');
 Router::get('home/stand', 	'HomeController/stand');
 
+Router::get('home/',		'HomeController/signup');
+Router::get('home/signup', 	'HomeController/signup');
 /************** End of URLEncoder Routing Rules ************************************/

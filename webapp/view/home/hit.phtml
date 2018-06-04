@@ -2,7 +2,7 @@
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\URL;
-
+Layout::includeLayout('headermenugame') 
 ?>
 
 <br></br>
@@ -49,14 +49,6 @@ if(isset($_GET['action'])) $action = $_GET['action'];
 	if($action == 'stand') {
 		$_SESSION['game']->playDealer();
 	}
-
-	
-	echo "<br><br>Dealer Cards:<br>";
-	foreach($_SESSION['game']->Cards['Dealer'] as $card)
-	echo "
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
-	";
-	echo "<br>Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
 	echo "Player Cards:<br>";
 	foreach($_SESSION['game']->Cards['Player'] as $card) 
 	echo "
@@ -65,6 +57,13 @@ if(isset($_GET['action'])) $action = $_GET['action'];
 	";
 
 	echo "<br>Player Score: ".$_SESSION['game']->Scores['Player'];
+	
+	echo "<br><br>Dealer Cards:<br>";
+	foreach($_SESSION['game']->Cards['Dealer'] as $card)
+	echo "
+	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
+	";
+	echo "<br>Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
 	// Options
 	if($_SESSION['game']->Scores['Player'] < 21) echo "<br><a href='?action=hit'>[Hit]</a>";
 	echo "<br><a href='?action=stand'>[Stand]</a><br><a href='?action=new'>[New]</a>";

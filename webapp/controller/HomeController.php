@@ -26,6 +26,9 @@ class HomeController extends BaseController
     public function login(){
         return View::make('home.login');  
     }
+    public function signup(){
+        return View::make('home.signup');
+    } 
 
     public function worksheet(){
 
