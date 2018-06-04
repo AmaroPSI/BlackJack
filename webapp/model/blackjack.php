@@ -25,7 +25,7 @@
 			}
 		}
 		
-		public function addCard($entity, $num = 2) {
+		public function addCard($entity, $num = 1) {
 			
 			// Shuffle Deck and deal two Cards
 			shuffle($this->Deck);

@@ -28,56 +28,52 @@ Layout::includeLayout('headermenugame')
 	//Shuffle the Cards
 	for($x=0; $x<1; $x++){
 
-	//Generate the first 2 cards
-	$rand_key = array_rand($CardsArray, 1);
-	$rand_card = $CardsArray[$rand_key];
+		//Generate the first 2 cards
+		$rand_key = array_rand($CardsArray, 1);
+		$rand_card = $CardsArray[$rand_key];
 
-	if($x == 0 || $x == 1){
-		$player_cards[$x] = "$rand_card";
+		//Generate 1 random card to dealer
+		$rand_key1 = array_rand($CardsArray, 1);
+		$rand_card1 = $CardsArray[$rand_key1];
+		
+		//Generate 1 random card to player
+		$rand_key2 = array_rand($CardsArray, 1);
+		$rand_card2 = $CardsArray[$rand_key2];
+
+		$rand_key3 = array_rand($CardsArray, 1);
+		$rand_card3 = $CardsArray[$rand_key3];
 	}
-	else{
-		$dealer_cards[$x-2] = "$rand_card";
-	}
-
-}
-	//Generate 1 random card to dealer
-	$rand_key1 = array_rand($CardsArray, 1);
-	$rand_card1 = $CardsArray[$rand_key1];
+	if(isset($_GET['action'])) $action = $_GET['action'];
 	
-	//Generate 1 random card to player
-	$rand_key2 = array_rand($CardsArray, 1);
-	$rand_card2 = $CardsArray[$rand_key2];
-
-if(isset($_GET['action'])) $action = $_GET['action'];
-	
-	if($action == 'new') {
-		$_SESSION['game'] = new Blackjack();
-		$_SESSION['game']->addCard('Player');
-		$_SESSION['game']->addCard('Dealer');
-	} 
-	
-	if($action == 'hit') {
-		if($_SESSION['game']->Scores['Player'] < 21) {
-			$_SESSION['game']->rand_card('Player', 1);	
-			if($_SESSION['game']->Scores['Player'] > 21) $_SESSION['game']->playDealer();
+		if($action == 'new') {
+			$_SESSION['game'] = new Blackjack();
+			$_SESSION['game']->addCard('Player');
+			$_SESSION['game']->addCard('Dealer');
+		} 
+		
+		if($action == 'hit') {
+			if($_SESSION['game']->Scores['Player'] < 21) {
+				$_SESSION['game']->rand_card('Player', 1);	
+				if($_SESSION['game']->Scores['Player'] > 21) $_SESSION['game']->playDealer();
+			}
 		}
-	}
-	
-	if($action == 'stand') {
-		$_SESSION['game']->playDealer();
-	}
+		
+		if($action == 'stand') {
+			$_SESSION['game']->playDealer();
+		}
 	
 	echo "Dealer Cards:<br>";
 	foreach($_SESSION['game']->Cards['Dealer'] as $card)
 	echo "
 	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
-	";
+	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card1\" width=\"180\" height=\"232\" />	";
 	echo "<br>Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
 
 	echo "<br><br> <br> Player Cards:<br>";
 	foreach($_SESSION['game']->Cards['Player'] as $card) 
 	echo "
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card1\" width=\"180\" height=\"232\" />
+	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card2\" width=\"180\" height=\"232\" />
+	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card3\" width=\"180\" height=\"232\" />
 	";
 
 	echo "<br>Player Score: ".$_SESSION['game']->Scores['Player'];
