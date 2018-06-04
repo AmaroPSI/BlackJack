@@ -12,15 +12,22 @@ use ArmoredCore\WebObjects\URL;
 	//Stand/Hit...
 	$action = 'new';
 
+	//Cartas
+
+	$player_cards = array("","");
+	$dealer_cards = array("","");
+	//Soma começa a 0
+
+	$player_sum = 0;
+	$dealer_sum = 0;
 
 	//Shuffle the Cards
-	for($x=0; $x<3; $x++){
+	for($x=0; $x<1; $x++){
 
-	//Cards to Player
+	//Generate the first 2 cards
 	$rand_key = array_rand($CardsArray, 1);
 	$rand_card = $CardsArray[$rand_key];
 
-	
 	if($x == 0 || $x == 1){
 		$player_cards[$x] = "$rand_card";
 	}
@@ -29,6 +36,14 @@ use ArmoredCore\WebObjects\URL;
 	}
 
 }
+	//Generate 1 random card to dealer
+	$rand_key1 = array_rand($CardsArray, 1);
+	$rand_card1 = $CardsArray[$rand_key1];
+	
+	//Generate 1 random card to player
+	$rand_key2 = array_rand($CardsArray, 1);
+	$rand_card2 = $CardsArray[$rand_key2];
+
 if(isset($_GET['action'])) $action = $_GET['action'];
 	
 	if($action == 'new') {
@@ -57,8 +72,7 @@ if(isset($_GET['action'])) $action = $_GET['action'];
 	echo "<br><br> <br> Player Cards:<br>";
 	foreach($_SESSION['game']->Cards['Player'] as $card) 
 	echo "
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
+	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card1\" width=\"180\" height=\"232\" />
 	";
 
 	echo "<br>Player Score: ".$_SESSION['game']->Scores['Player'];
