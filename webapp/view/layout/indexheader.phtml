@@ -8,16 +8,8 @@ use ArmoredCore\WebObjects\URL;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author"      content="Silvio Priem Mendes, PhD">
 
-<<<<<<< HEAD
-    <title>BlackJack</title>
-=======
-    <title>Blackjack</title>
->>>>>>> 0193662a20cc300cd7e666ee14f49c0dd7626799
+   <title>Blackjack</title>
 
     <?=AssetBundler::css()?>
 
@@ -36,13 +28,13 @@ use ArmoredCore\WebObjects\URL;
         <div class="navbar-header">
             <!-- Button for smallest screens -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="navbar-brand" href="<?= URL::toRoute('home/index')?>">BlackJack</a>
+            <a class="navbar-brand" href="<?= URL::toRoute('home/index')?>"><img width="130" height="45" src="<?= Asset::image('blackjack.png')?>" alt="BlackJack"></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <li class="active"><a href="<?= URL::toRoute('home/index')?>">Home</a></li>
+                <li class="active"><a href="<?= URL::toRoute('home/index')?>">HOME</a></li>
                 </li>
-                <li><a href="<?= URL::toRoute('home/about')?>">About</a></li>
+                <li><a href="<?= URL::toRoute('home/about')?>">ABOUT</a></li>
                 <li><a class="btn" href="<?= URL::toRoute('home/login')?>">SIGN IN / SIGN UP</a></li>
             </ul>
         </div><!--/.nav-collapse -->
