@@ -19,7 +19,9 @@ use ArmoredCore\WebObjects\URL;
 	//Cards to Player
 	$rand_key = array_rand($CardsArray, 1);
 	$rand_card = $CardsArray[$rand_key];
-
+	//Remove Cards From the Array
+	unset($CardsArray[$rand_key]);
+	
 	
 	if($x == 0 || $x == 1){
 		$player_cards[$x] = "$rand_card";
@@ -47,14 +49,15 @@ if(isset($_GET['action'])) $action = $_GET['action'];
 	if($action == 'stand') {
 		$_SESSION['game']->playDealer();
 	}
-	echo "Dealer Cards:<br>";
+
+	
+	echo "<br><br>Dealer Cards:<br>";
 	foreach($_SESSION['game']->Cards['Dealer'] as $card)
 	echo "
 	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
 	";
 	echo "<br>Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
-
-	echo "<br><br> <br> Player Cards:<br>";
+	echo "Player Cards:<br>";
 	foreach($_SESSION['game']->Cards['Player'] as $card) 
 	echo "
 	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
@@ -63,8 +66,8 @@ if(isset($_GET['action'])) $action = $_GET['action'];
 
 	echo "<br>Player Score: ".$_SESSION['game']->Scores['Player'];
 	// Options
-	if($_SESSION['game']->Scores['Player'] < 21) echo "<br><a href='hit'>[Hit]</a>";
-	echo "<br><a href='stand'>[Stand]</a><br><a href='?action=new'>[New]</a>";
+	if($_SESSION['game']->Scores['Player'] < 21) echo "<br><a href='?action=hit'>[Hit]</a>";
+	echo "<br><a href='?action=stand'>[Stand]</a><br><a href='?action=new'>[New]</a>";
 	
 	if($_SESSION['game']->GameEnd == 1)
 	echo "<br>Game Result: ".$_SESSION['game']->getResult();

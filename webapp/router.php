@@ -26,7 +26,12 @@ Router::get('home/',		'HomeController/gamemenu');
 Router::get('home/gamemenu','HomeController/gamemenu');
 
 Router::get('home/',		'HomeController/game');
-Router::get('home/game','HomeController/game');
+Router::get('home/game',	'HomeController/game');
 
+Router::get('home/',		'HomeController/hit');
+Router::get('home/hit', 	'HomeController/hit');
+
+Router::get('home/',		'HomeController/stand');
+Router::get('home/stand', 	'HomeController/stand');
 
 /************** End of URLEncoder Routing Rules ************************************/

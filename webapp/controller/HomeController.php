@@ -61,4 +61,10 @@ class HomeController extends BaseController
     public function game(){
         return View::make('home.game');
     }
+    public function hit(){
+        return View::make('home.hit');
+    } 
+    public function stand(){
+        return View::make('home.stand');
+    } 
 }
