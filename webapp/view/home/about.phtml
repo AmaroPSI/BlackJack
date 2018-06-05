@@ -2,10 +2,9 @@
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\URL;
-Layout::includeLayout('LayoutAbout'); ?>
 
-    <!-- Header -->
- 
+Layout::includeLayout('LayoutAbout')?>
+
         <div class="container">
             <div class="row">
                 <br></br>
@@ -31,4 +30,4 @@ Layout::includeLayout('LayoutAbout'); ?>
                 <h3 class="title" style="text-align: center"><b><i>VALOR DAS CARTAS</i></b>                </h3>
                 <img width="1200" height="550" src="<?= Asset::image('valordascartas.jpg')?>" alt="valor das cartas"></a>
             </div>
-<?php Layout::includeLayout('footer')?>
+<?php Layout::includeLayout('LayoutFooter')?>
