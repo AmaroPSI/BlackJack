@@ -31,7 +31,7 @@ Router::get('home/stand', 	'HomeController/stand');
 Router::get('home/',		'HomeController/signup');
 Router::get('home/signup', 	'HomeController/signup');
 
-Router::get('home/',		'HomeController/newgame');
-Router::get('home/newgame', 	'HomeController/newgame');
+Router::get('home/',		'HomeController/novojogo');
+Router::get('home/novojogo', 'HomeController/novojogo');
 
 /************** End of URLEncoder Routing Rules ************************************/
