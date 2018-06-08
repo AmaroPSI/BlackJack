@@ -1,28 +1,16 @@
 <?php
-echo"<!DOCTYPE html>
-<head>
-
-<script>
-	$( document ).ready(function(){
-		$('#hitSubmitButton').click(function (evt){
-			evt.preventDefault(); //stops the submit taking place
-			var myQuery = $('#queryText').val(); //get the query value
-
-			//load data received from the php script to the game
-			$('#player_cards_container').load('loadcard.php', { query:null, anotherVar:null });
-		});
-	});
-	//Draw or Stand
-</script>
-
-</head>
-<body>";
-
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\URL;
 
-Layout::includeLayout('LayoutHeader')?>
+Layout::includeLayout('LayoutHeader')
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script src="my_jquery_functions.js">
+	
+</script>
+
 
 <br></br>
 <br></br>
@@ -32,6 +20,17 @@ Layout::includeLayout('LayoutHeader')?>
 	$action = 'new';
 ?>
 
+<script>
+	$( function(){
+		$('#button').click(function()
+			{
+			$('#player_cards_container').load('loadcard');
+			}
+		);
+});
+	
+	//Draw or Stand
+</script>
 <?php
 	//Soma começa a 0
 
@@ -84,9 +83,13 @@ Layout::includeLayout('LayoutHeader')?>
 	echo "<br>Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
 	
 ?>	
-<input id="querySubmitButton" type="button" value="Test Hit">
-<div id="player_cards_container"></div>
-		
+
+
+<div id="player_cards_container">
+<button id="button"  data-role="button">Click on button</button>
+</div>      
+
+
 	
 	
 <?php
@@ -101,10 +104,7 @@ Layout::includeLayout('LayoutHeader')?>
 	echo "<br>Player Score: ".$_SESSION['game']->Scores['Player'];
 	// Options
 	if($_SESSION['game']->Scores['Player'] < 21) echo "<br><a href='hit'>[Hit]</a>";
-
-
 	echo "<br><a href='stand'>[Stand]</a><br><a href='novojogo'>[New]</a>";
-	
 	if($_SESSION['game']->GameEnd == 1)
 	echo "<br>Game Result: ".$_SESSION['game']->getResult();
 

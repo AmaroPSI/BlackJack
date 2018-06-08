@@ -72,4 +72,7 @@ class HomeController extends BaseController
     public function novojogo(){
         return View::make('home.novojogo');
     } 
+    public function loadcard(){
+        return View::make('home.loadcard');
+    } 
 }
