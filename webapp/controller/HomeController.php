@@ -55,7 +55,6 @@ class HomeController extends BaseController
         Redirect::toRoute('home/worksheet');
     }
     public function about(){
-    //O método about não processa quaisquer dados e apenas devolve a vista ao cliente
         return View::make('home.about');
     }
     public function gamemenu(){
@@ -70,7 +69,10 @@ class HomeController extends BaseController
     public function stand(){
         return View::make('home.stand');
     } 
-    public function newgame(){
-        return View::make('home.newgame');
+    public function novojogo(){
+        return View::make('home.novojogo');
+    } 
+    public function loadcard(){
+        return View::make('home.loadcard');
     } 
 }
