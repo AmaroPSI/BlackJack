@@ -5,18 +5,40 @@ use ArmoredCore\WebObjects\URL;
 
 Layout::includeLayout('LayoutHeader')?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script src="my_jquery_functions.js">
+	
+</script>
 <br></br>
 <br></br>
 <?php
-	
 	$CardsArray = array("cardClubs2", "cardClubs3", "cardClubs4", "cardClubs5", "cardClubs6", "cardClubs7", "cardClubs8", "cardClubs9", "cardClubs10", "cardClubsA", "cardClubsJ", "cardClubsK", "cardClubsQ", "cardDiamonds2", "cardDiamonds3", "cardDiamonds4", "cardDiamonds5", "cardDiamonds6", "cardDiamonds7", "cardDiamonds8", "cardDiamonds9", "cardDiamonds10", "cardDiamondsA", "cardDiamondsJ", "cardDiamondsK", "cardDiamondsQ", "cardHearts2", "cardHearts3", "cardHearts4", "cardHearts5", "cardHearts6", "cardHearts7", "cardHearts8", "cardHearts9.", "cardHearts10", "cardHeartsA", "cardHeartsJ", "cardHeartsK", "cardHeartsQ", "cardSpades2", "cardSpades3", "cardSpades4", "cardSpades5", "cardSpades6", "cardSpades7", "cardSpades8", "cardSpades9", "cardSpades10", "cardSpadesA", "cardSpadesJ", "cardSpadesK", "cardSpadesQ");
 	//Stand/Hit...
 	$action = 'new';
+?>
+<script>
+	//Hit
+	$( function(){
+	$('#buttonhit').click(function()
+			{
+			$('#add_cards_container').load('loadcard');
+			}
+		);
+	});
+</script>
+<script>
+	//Stand
+	$( function(){
+	$('#buttonstand').click(function()
+			{
+			$('#add_dealer_cards_container').load('loadcard');
+			}
+		);
+	});
+</script>
 
-	//Cartas
-
-	$player_cards = array("","");
-	$dealer_cards = array("","");
+<?php
 	//Soma começa a 0
 
 	$player_sum = 0;
@@ -58,27 +80,53 @@ Layout::includeLayout('LayoutHeader')?>
 		if($action == 'stand') {
 			$_SESSION['game']->playDealer();
 		}
-	
-	echo "Dealer Cards:<br>";
-	foreach($_SESSION['game']->Cards['Dealer'] as $card)
-	echo "
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card1\" width=\"180\" height=\"232\" />	";
-	echo "<br>Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
 
-	echo "<br><br> <br> Player Cards:<br>";
-	foreach($_SESSION['game']->Cards['Player'] as $card) 
-	echo "
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card2\" width=\"180\" height=\"232\" />
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card3\" width=\"180\" height=\"232\" />
-	";
+	echo'<div id="dealer_cards_container">';
+		echo "<span><br>Dealer Cards:</span><br>";
+		foreach($_SESSION['game']->Cards['Dealer'] as $card)
+		echo '<span>';
+		echo "
+		<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
+		<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card1\" width=\"180\" height=\"232\" />
+		";
+		echo '</span>';
+				echo '<div id="add_dealer_cards_container" style="width: 200px; position: absolute;left: 367px; top:120px;">';echo '</div>';
 
-	echo "<br>Player Score: ".$_SESSION['game']->Scores['Player'];
-	// Options
-	if($_SESSION['game']->Scores['Player'] < 21) echo "<br><a href='hit'>[Hit]</a>";
-	echo "<br><a href='stand'>[Stand]</a><br><a href='novojogo'>[New]</a>";
-	
-	if($_SESSION['game']->GameEnd == 1)
-	echo "<br>Game Result: ".$_SESSION['game']->getResult();
+	echo '</div>';
+
+		echo '<div class="Dealer_Score" style="top:412px;">';
+			echo "Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
+		echo '</div>';
+
+
+
+	echo '<div class="player_cards_container" style="float: left;">';
+		echo "<span> <br>Player Cards:</span><br>";	
+		foreach($_SESSION['game']->Cards['Player'] as $card) 
+		echo '<span>';
+		echo "<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card2\" width=\"180\" height=\"232\" />
+		<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card3\" width=\"180\" height=\"232\" />";
+		echo '</span>';
+		echo '<div id="add_cards_container" style="width: 200px; position: absolute;left: 368px; top:412px;">';echo '</div>';
+
+
+		echo '<div class="Player_Score" style="top:412px;">';
+		echo "Player Score: ".$_SESSION['game']->Scores['Player'];
 
 ?>
+	 
+<?php
+	// Options
+	echo '<div class="Options" style="top:412px;">';
+ 	
+	if($_SESSION['game']->Scores['Player'] < 21);
+	echo'<button id="buttonhit"  data-role="buttonhit">Hit</button><br>';
+	echo'<button id="buttonstand"  data-role="buttonstand">Stand</button><br>';
+	echo'<a href="novojogo"><button>New Game</button></a>
+';
+	if($_SESSION['game']->GameEnd == 1)
+	echo "<br>Game Result: ".$_SESSION['game']->getResult();
+	echo "</div>"
+?>
+	
+	
