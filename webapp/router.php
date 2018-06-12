@@ -37,4 +37,6 @@ Router::get('home/newgame', 	'HomeController/newgame');
 Router::get('home/',		'HomeController/loadcard');
 Router::get('home/loadcard','HomeController/loadcard');
 
+Router::get('home/',		'HomeController/newgame');
+Router::get('home/novojogo','HomeController/newgame');
 /************** End of URLEncoder Routing Rules ************************************/

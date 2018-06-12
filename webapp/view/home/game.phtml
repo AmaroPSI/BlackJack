@@ -21,7 +21,7 @@ Layout::includeLayout('LayoutHeader')?>
 	$( function(){
 	$('#button').click(function()
 			{
-			$('#player_cards_container').load('loadcard');
+			$('#add_cards_container').load('loadcard');
 			}
 		);
 	});
@@ -71,28 +71,29 @@ Layout::includeLayout('LayoutHeader')?>
 			$_SESSION['game']->playDealer();
 		}
 	echo'<div id="all_cards">';	
-	echo'<div id="dealer_cards_container">';
-	echo "Dealer Cards:<br>";
-	foreach($_SESSION['game']->Cards['Dealer'] as $card)
-	echo "
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
-	<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card1\" width=\"180\" height=\"232\" />	";
-	echo "<br>Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
-	echo '</div>';
-	
-	echo "<span> <br>Player Cards:</span><br>";	
-	
-	foreach($_SESSION['game']->Cards['Player'] as $card) 
-	
-	echo '<div class="container"';
-	echo '<span>';
-	echo "<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card2\" width=\"180\" height=\"232\" />";
-	echo '</span>';
-	echo '<span>';
-	echo "<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card3\" width=\"180\" height=\"232\" />";
-	echo '</span>';
-	echo '<div id="player_cards_container">';echo '</div>';
-	
+		echo'<div id="dealer_cards_container">';
+			echo "Dealer Cards:<br>";
+			foreach($_SESSION['game']->Cards['Dealer'] as $card)
+			echo "
+			<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card\" width=\"180\" height=\"232\" />
+			<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card1\" width=\"180\" height=\"232\" />
+			";
+			echo "<br>Dealer Score: ".$_SESSION['game']->Scores['Dealer'];
+		echo '</div>';
+		
+		echo "<span> <br>Player Cards:</span><br>";	
+		
+		foreach($_SESSION['game']->Cards['Player'] as $card) 
+		
+		echo '<div class="container">';
+			echo '<span>';
+			echo "<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card2\" width=\"180\" height=\"232\" />
+			<img src=\"http://localhost/BlackJack/public/img/Cards/$rand_card3\" width=\"180\" height=\"232\" />";
+			echo '</span>';
+		echo '</div>';
+		echo '<div id="add_cards_container">';
+		echo '</div>';
+		
 	
 	echo '</div>	';
 
