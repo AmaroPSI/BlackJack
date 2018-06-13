@@ -79,4 +79,7 @@ class HomeController extends BaseController
     public function cardpointstest(){
       return View::make('home.cardpointstest');
     } 
+    public function blackjack(){
+      return View::make('home.blackjack');
+    } 
 }

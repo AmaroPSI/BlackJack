@@ -1,28 +1,4 @@
-<?
-/*
-@(#)File:           blackjack.php
-@(#)Version:        1.0
-@(#)Release:        Date: 3/26/2015
-@(#)Last changed:   Date: ??/??/2014
-@(#)Purpose:        Blackjack prototype
-@(#)Author:         William Hughes
-@(#)URL:         	www.GameMakersForums.com
-@(#)Copyright:      If generate money from this script somehow, a donation would be nice.
-@(#)Product:        :PHP Blackjack Prototype
-*/
-
-
-
-/* Black Jack Points
- 2 - 10 = There relative Numbers
- J = 10 Points
- Q = 10 Points
- K = 10 Points
- A = 1 or 11 Points
-*/
-
-session_start();
-
+<?php
 
 $count = 1;
 if(isset($_POST['hit']) && $_SESSION['bj_state'] == "in_game")
@@ -32,7 +8,7 @@ if(isset($_POST['hit']) && $_SESSION['bj_state'] == "in_game")
 	if(countCards($_SESSION['bj_player_cards']) > 21)
 	{
 		echo "You busted, dealer won...";
-		$_SESSION['bj_state'] = 2;
+		$_SESSION['bj_state'] = 1;
 	}
 }
 //player decided to stay
@@ -234,21 +210,19 @@ function makeGame()
 		<?
 		if($_SESSION['bj_state'] == "game_over")
 		{
-		for($x=0; $x<5; $x++)
-		{
-		?><td>
-		<img src="cards/e/<? echo $_SESSION['bj_dealer_cards'][$x] . $_SESSION['bj_dealer_suits'][$x] . ".jpg"; ?>" name="dealercard_<?= $x+1 ?>" id="dealercard_<?= $x+1 ?>"><br>
-		</td><?
-		}
-		}
-		else
-		{
-		for($x=0; $x<5; $x++)
-		{
-		?><td>
-		<img src="cards/e/.jpg" name="dealercard_<?= $x+1 ?>" id="dealercard_<?= $x+1 ?>"><br>
-		</td><?
-		}
+			for($x=0; $x<5; $x++)
+				{
+				?>
+				<img src="cards/e/<? echo $_SESSION['bj_dealer_cards'][$x] . $_SESSION['bj_dealer_suits'][$x] . ".jpg"; ?>" name="dealercard_<?= $x+1 ?>" id="dealercard_<?= $x+1 ?>"><br>
+				<?
+				}
+			}
+			else{
+				for($x=0; $x<5; $x++){
+				?>
+				<img src="cards/e/.jpg" name="dealercard_<?= $x+1 ?>" id="dealercard_<?= $x+1 ?>"><br>
+				<?
+				}
 		}
 		?>
 	</tr>
@@ -257,7 +231,9 @@ function makeGame()
 		<?
 		for($x=0; $x<5; $x++)
 		{
-		?><td><img src="cards/e/<? echo $_SESSION['bj_player_cards'][$x] . $_SESSION['bj_player_suits'][$x] . ".jpg"; ?>" name="playercard_<?= $x+1 ?>" id="playercard_<?= $x+1 ?>">
+		?><td>		
+		<img src="cards/e/" name="dealercard_<?= $x+1 ?>" id="dealercard_<?= $x+1 ?>"><br>
+
 		<?
 		}
 		?>
@@ -299,3 +275,4 @@ if(!isset($_POST['stay']))
 		</td>
 	</tr>
 </table>
+?>
