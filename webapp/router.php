@@ -39,4 +39,8 @@ Router::get('home/loadcard','HomeController/loadcard');
 
 Router::get('home/',		'HomeController/novojogo');
 Router::get('home/novojogo','HomeController/novojogo');
+
+Router::get('home/',		'HomeController/cardpointstest');
+Router::get('home/cardpointstest','HomeController/cardpointstest');
+
 /************** End of URLEncoder Routing Rules ************************************/

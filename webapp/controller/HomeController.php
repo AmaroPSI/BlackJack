@@ -76,4 +76,7 @@ class HomeController extends BaseController
     public function loadcard(){
       return View::make('home.loadcard');
     } 
+    public function cardpointstest(){
+      return View::make('home.cardpointstest');
+    } 
 }

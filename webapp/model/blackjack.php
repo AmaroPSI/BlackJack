@@ -17,8 +17,8 @@
 					
 					// Values for Cards
 					$Value = $Face;
-					if(!is_numeric($Face)) $Value = 10;
-					if($Face == 'A') $Value = 11;
+					if(!is_numeric($Face)) $Value = 2;
+					if($Face == 'A') $Value = 2;
 					
 					$this->Deck[] = array("Suit" => $Suit, "Face" => $Face, "Value" => $Value);					
 				}
@@ -48,7 +48,7 @@
 				$new_Value = $Value + $card['Value'];
 				if($card['Face'] == 'A') $Aces++;
 				if($new_Value > 21 && $Aces > 0) {
-					$Value = $Value - 10;
+					$Value = $Value - 2;
 					$Aces--;
 				} 
 				$Value += $card['Value'];
