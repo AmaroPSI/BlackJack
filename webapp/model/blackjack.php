@@ -14,88 +14,17 @@
 			// Build a Deck
 			foreach($this->Suit as $Suit) {
 				foreach($this->Face as $Face) {
-						
+					
 					// Values for Cards
 					$Value = $Face;
-					if(!is_numeric($Face)) $Value = 2;
-					if($Face == 'A') $Value = 2;
+					if(!is_numeric($Face)) $Value = 10;
+					if($Face == 'A') $Value = 11;
 					
 					$this->Deck[] = array("Suit" => $Suit, "Face" => $Face, "Value" => $Value);					
 				}
 			}
 		}
-		//count value of cards
-function countCards($cards)
-{
-	//reassign some cards by number.
-	for($x=0; $x<count($cards); $x++)
-	{
-		switch ($cards[$x])
-		{
-			case "j":
-				$cards[$x] = 10;
-				break;
-			case "q":
-				$cards[$x] = 10;
-				break;
-			case "k":
-				$cards[$x] = 10;
-				break;
-		}
-	}
-	
-	//start counting the cards
-	for($x=0; $x<count($cards);$x++)
-	{
-		//if the card isn't an ACE
-		if(is_numeric($cards[$x]))
-		{
-			$count = $count + $cards[$x];
-		}
-		else //if card is an ace, we'll count last. 
-		{
-			$delay[] = $card[$x];
-		}
-	}
-	//check if there's any ACES
-	if(count($delay) > 0)
-	{
-		//if ONE ACE
-		if(count($delay) == 1)
-		{
-			//if total count of cards is 10 or less then 10, we'll make ACE 11,
-			if($count <= 10)
-			{
-				$count = $count +  11;
-			}//if the total count of cards is 21, player busted.
-			elseif($count >= 21)
-			{
-				$count= $count + 1;
-			}
-		}
-		else//if more then one ace
-		{
-			//loop through all aces
-			for($x=0; $x<count($delay); $x++)
-			{
-				//if total count is less then 10 minus the count of the other aces, ACE is 11
-				if($count <= 10 - count($delay))
-				{
-					$count = $count + 11;
-				}
-				elseif($count >= 21)
-				{
-					$count = $count + 1;
-				}
-			}
-		}
-	}
-	
-	//return card count
-	return $count;
-}
-
-	
+		
 		public function addCard($entity, $num = 1) {
 			
 			// Shuffle Deck and deal two Cards
@@ -109,7 +38,7 @@ function countCards($cards)
 			$this->calculateScore($entity);
 			
 		}
-	
+		
 		private function calculateScore($entity) {
 			
 			// Loop through and add the Values
@@ -119,7 +48,7 @@ function countCards($cards)
 				$new_Value = $Value + $card['Value'];
 				if($card['Face'] == 'A') $Aces++;
 				if($new_Value > 21 && $Aces > 0) {
-					$Value = $Value - 2;
+					$Value = $Value - 10;
 					$Aces--;
 				} 
 				$Value += $card['Value'];
@@ -128,7 +57,6 @@ function countCards($cards)
 			// Set the Value
 			$this->Scores[$entity] = $Value;
 		}
-
 		
 		public function playDealer() {
 			// End the game
