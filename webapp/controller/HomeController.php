@@ -3,6 +3,7 @@ use ArmoredCore\Controllers\BaseController;
 use ArmoredCore\WebObjects\Redirect;
 use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\View;
+use ArmoredCore\WebObjects\Post;
 
 /**
  * Created by PhpStorm.
@@ -18,17 +19,20 @@ class HomeController extends BaseController
         return View::make('home.index');
     }
 
-    public function start(){
-        //View::attachSubView('titlecontainer', 'layout.pagetitle', ['title' => 'Quick Start']);
-        return View::make('home.start');
+    public function howtoplay(){
+
+        return View::make('home.howtoplay');
     }
 
     public function login(){
-        return View::make('home.login');  
+        //Throw new Exception('Method not implemented. Do it yourself!');
+        return View::make('home.login');
     }
+
     public function signup(){
+        
         return View::make('home.signup');
-    } 
+    }
 
     public function worksheet(){
 
@@ -54,32 +58,49 @@ class HomeController extends BaseController
         Session::destroy();
         Redirect::toRoute('home/worksheet');
     }
-    public function about(){
-    //O método about não processa quaisquer dados e apenas devolve a vista ao cliente
-        return View::make('home.about');
+
+    public function aboutus(){
+        return View::make('home.aboutus');
+    }
+    public function play(){
+         return View::make('home.play');
     }
     public function gamemenu(){
-        return View::make('home.gamemenu');
+            return View::make('home.gamemenu');
+        }
+    public function stay(){
+        $stay = Post::get('stay');
+        $deck = Session::get('deck');
+        $dealerHand = Session::get('dealerHand');
+        $dealerHand->addCardToHand($deck->giveCardToHand());
+
+        if($dealerHand->value > 21){
+
+        }
+
+        return View::make('home.play');
     }
-    public function game(){
-        return View::make('home.game');
+
+    public function ask(){
+        $ask = Post::get('ask');
+        $deck = Session::get('deck');
+        $playerHand = Session::get('playerHand');
+        $playerHand->addCardToHand($deck->giveCardToHand());
+        return View::make('home.play');        
     }
-    public function hit(){
-        return View::make('home.hit');
-    } 
-    public function stand(){
-        return View::make('home.stand');
-    } 
-    public function novojogo(){
-        return View::make('home.novojogo');
-    } 
-    public function loadcard(){
-      return View::make('home.loadcard');
-    } 
-    public function cardpointstest(){
-      return View::make('home.cardpointstest');
-    } 
-    public function blackjack(){
-      return View::make('home.blackjack');
-    } 
+
+    public function bet(){
+        $bet = Post::get('bet');
+        $deck = new Deck();
+        $playerHand = new Hand($deck->giveCardToHand());
+        $dealerHand = new Hand($deck->giveCardToHand());
+        $playerHand->addCardToHand($deck->giveCardToHand());
+        Session::set('deck', $deck);
+        Session::set('playerHand', $playerHand);
+        Session::set('dealerHand', $dealerHand);
+
+        return View::make('home.play');
+    }
+
 }
+

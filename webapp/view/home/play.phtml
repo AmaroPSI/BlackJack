@@ -1,0 +1,64 @@
+<?php
+use ArmoredCore\WebObjects\Asset;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\session;
+
+
+$playerHand;
+$dealerHand;
+if(Session::has("playerHand")){
+     $playerHand = Session::get('playerHand');
+     $dealerHand = Session::get("dealerHand");
+}
+
+
+Layout::includeLayout('LayoutHeader'); ?>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- Intro -->
+    <div class="container text-left">
+            <br>
+            <form NAME ="form" METHOD = "POST" ACTION = "<?=URL::toRoute('home/stay')?>">    
+                <button class="stay" name="stay">STAND</button>
+            </form>
+            <br>
+            <form NAME ="form" METHOD ="POST" ACTION = "<?=URL::toRoute('home/ask')?>">    
+                <button class="ask" name="ask">HIT</button>
+            </form>    
+            <br>
+            <form NAME ="form" METHOD ="POST" ACTION = "<?=URL::toRoute('home/bet')?>">
+                <label class="valueBet">Insert the value who you want to bet: </label>
+                <br>
+                <input type="value" name="credit" class="credit" width="50" height="20"></button>
+                <button class="bet" name="bet">BET</button>
+            </form>
+    </div>
+    <!-- /Intro-->
+<br>
+<div align="center">
+<?php 
+    if(Session::has("playerHand")){ ?>
+        <h1>value:<?=$dealerHand->value;?></h1>
+            <?php foreach ($dealerHand->cards as $value) { ?>
+                    <img src="<?=Asset::image($value->img)?>"></img>
+            <?php } ?>
+        <br></br>
+        <h1>value:<?=$playerHand->value;?></h1>
+            <?php foreach ($playerHand->cards as $value) { ?>
+                    <img src="<?=Asset::image($value->img)?>"></img>
+            <?php } ?>
+    <?php } ?>
+</div>
+<?php
+
+Layout::includeLayout('LayoutFooter');
+
+?>
+

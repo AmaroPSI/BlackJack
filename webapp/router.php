@@ -10,7 +10,6 @@ use ArmoredCore\Facades\Router;
 Router::get('/',			'HomeController/index');
 Router::get('home/',		'HomeController/index');
 Router::get('home/index',	'HomeController/index');
-Router::get('home/start',	'HomeController/start');
 Router::get('home/about',	'HomeController/about');
 
 Router::get('home/',		'HomeController/login');
@@ -19,20 +18,8 @@ Router::get('home/login',	'HomeController/login');
 Router::get('home/',		'HomeController/gamemenu');
 Router::get('home/gamemenu','HomeController/gamemenu');
 
-Router::get('home/',		'HomeController/game');
-Router::get('home/game',	'HomeController/game');
-
-Router::get('home/',		'HomeController/hit');
-Router::get('home/hit', 	'HomeController/hit');
-
-Router::get('home/',		'HomeController/stand');
-Router::get('home/stand', 	'HomeController/stand');
-
 Router::get('home/',		'HomeController/signup');
 Router::get('home/signup', 	'HomeController/signup');
-
-Router::get('home/',		'HomeController/newgame');
-Router::get('home/newgame', 	'HomeController/newgame');
 
 Router::get('home/',		'HomeController/loadcard');
 Router::get('home/loadcard','HomeController/loadcard');
@@ -40,10 +27,12 @@ Router::get('home/loadcard','HomeController/loadcard');
 Router::get('home/',		'HomeController/novojogo');
 Router::get('home/novojogo','HomeController/novojogo');
 
-Router::get('home/',		'HomeController/cardpointstest');
-Router::get('home/cardpointstest','HomeController/cardpointstest');
+Router::get('home/',		'HomeController/play');
+Router::get('home/play',	'HomeController/play');
 
-Router::get('home/',		'HomeController/blackjack');
-Router::get('home/blackjack','HomeController/blackjack');
+Router::post('home/stay',	'HomeController/stay');
 
+Router::post('home/ask',	'HomeController/ask');
+
+Router::post('home/bet',	'HomeController/bet');
 /************** End of URLEncoder Routing Rules ************************************/
