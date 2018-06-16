@@ -21,6 +21,9 @@ Router::get('home/gamemenu','HomeController/gamemenu');
 Router::get('home/',		'HomeController/signup');
 Router::get('home/signup', 	'HomeController/signup');
 
+Router::get('home/',		'HomeController/about');
+Router::get('home/about','HomeController/about');
+
 Router::get('home/',		'HomeController/loadcard');
 Router::get('home/loadcard','HomeController/loadcard');
 

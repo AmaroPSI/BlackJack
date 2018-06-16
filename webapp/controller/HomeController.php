@@ -18,12 +18,7 @@ class HomeController extends BaseController
 
         return View::make('home.index');
     }
-
-    public function howtoplay(){
-
-        return View::make('home.howtoplay');
-    }
-
+    
     public function login(){
         //Throw new Exception('Method not implemented. Do it yourself!');
         return View::make('home.login');
@@ -59,8 +54,8 @@ class HomeController extends BaseController
         Redirect::toRoute('home/worksheet');
     }
 
-    public function aboutus(){
-        return View::make('home.aboutus');
+    public function about(){
+        return View::make('home.about');
     }
     public function play(){
          return View::make('home.play');
