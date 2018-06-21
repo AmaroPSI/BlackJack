@@ -37,4 +37,6 @@ Router::post('home/stay',	'BetController/stay');
 Router::post('home/ask',	'BetController/ask');
 Router::post('home/bet',	'BetController/bet');
 
+Router::post('home/',		'HomeController/gamemenu');
+Router::post('home/gamemenu','HomeController/gamemenu');
 /************** End of URLEncoder Routing Rules ************************************/
