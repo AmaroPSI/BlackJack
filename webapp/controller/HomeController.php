@@ -5,12 +5,6 @@ use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\View;
 use ArmoredCore\WebObjects\Post;
 
-/**
- * Created by PhpStorm.
- * User: smendes
- * Date: 09-05-2016
- * Time: 11:30
- */
 class HomeController extends BaseController
 {
 
@@ -18,17 +12,14 @@ class HomeController extends BaseController
 
         return View::make('home.index');
     }
-    
     public function login(){
         //Throw new Exception('Method not implemented. Do it yourself!');
         return View::make('home.login');
     }
-
     public function signup(){
         
         return View::make('home.signup');
     }
-
     public function worksheet(){
 
         View::attachSubView('titlecontainer', 'layout.pagetitle', ['title' => 'MVC Worksheet']);
@@ -53,7 +44,6 @@ class HomeController extends BaseController
         Session::destroy();
         Redirect::toRoute('home/worksheet');
     }
-
     public function about(){
         return View::make('home.about');
     }
@@ -63,39 +53,7 @@ class HomeController extends BaseController
     public function gamemenu(){
             return View::make('home.gamemenu');
         }
-    public function stay(){
-        $stay = Post::get('stay');
-        $deck = Session::get('deck');
-        $dealerHand = Session::get('dealerHand');
-        $dealerHand->addCardToHand($deck->giveCardToHand());
-
-        if($dealerHand->value > 21){
-
-        }
-
-        return View::make('home.play');
-    }
-
-    public function ask(){
-        $ask = Post::get('ask');
-        $deck = Session::get('deck');
-        $playerHand = Session::get('playerHand');
-        $playerHand->addCardToHand($deck->giveCardToHand());
-        return View::make('home.play');        
-    }
-
-    public function bet(){
-        $bet = Post::get('bet');
-        $deck = new Deck();
-        $playerHand = new Hand($deck->giveCardToHand());
-        $dealerHand = new Hand($deck->giveCardToHand());
-        $playerHand->addCardToHand($deck->giveCardToHand());
-        Session::set('deck', $deck);
-        Session::set('playerHand', $playerHand);
-        Session::set('dealerHand', $dealerHand);
-
-        return View::make('home.play');
-    }
+    
 
 }
 
